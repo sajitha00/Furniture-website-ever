@@ -9,6 +9,7 @@ import Thumbnail from "./Thumbnail";
 // import CategoryInput from "./components/CategoryInput";
 // import SEOSettings from "./components/SEOSettings";
 import AddButton from './AddButton';
+import api from "@/lib/api";
 
 // interface BlogData {
 //   title: string;
@@ -92,13 +93,18 @@ export default function QuillEditor() {
     let uploadedImageUrl = "";
     
     try {
+      if (!title.trim()) {
+        throw new Error('Blog title is required');
+      }
       
+      if (!content.trim()) {
+        throw new Error('Blog content is required');
+      }
       
       if (!thumbnailUrl) {
         throw new Error('Thumbnail image is required');
       }
 
-      // Client-only: use currently selected local thumbnail URL
       uploadedImageUrl = thumbnailUrl;
 
       const payload = {
@@ -126,9 +132,13 @@ export default function QuillEditor() {
         }
       );
       
-      console.log('Blog payload (client-only):', payload);
+      console.log('Submitting blog payload:', payload);
 
-      // Client-only: navigate after local validation/upload
+      // Call the API to create the blog post
+      const response = await api.content.create(payload);
+      console.log('Blog created successfully:', response);
+      
+      alert('Blog post created successfully!');
       router.push("/admin/blog/all-blogs");
     } catch (error: unknown) {
       console.error("Operation failed:", error);

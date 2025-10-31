@@ -4,6 +4,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { PrismaClient } from '@prisma/client';
 
+import contentRoutes from './content/routes';
+
 // Load environment variables
 dotenv.config();
 
@@ -42,6 +44,9 @@ app.get('/api/test-db', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Database connection failed', details: error });
   }
 });
+
+// Register content/blog routes
+app.use('/contents', contentRoutes);
 
 
 // Error handling middleware
