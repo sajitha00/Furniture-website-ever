@@ -56,7 +56,7 @@ function Consult() {
             <div className="overflow-hidden  group cursor-pointer">
               <Image
                 src="/image/about/concept/3.png"
-                alt="Artisan Production"
+                alt="Artisan Production image"
                 width={500}
                 height={667}
                 className="w-full h-full  transition-all duration-700 hover:scale-110"
