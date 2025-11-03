@@ -33,7 +33,7 @@ function Navbar() {
               <Link href="/appointment" className='text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium'>
                 Appointment
               </Link>
-              <Link href="/blog" className='text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium'>
+              <Link href="/Blog" className='text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium'>
                 Blog
               </Link>
             </div>
