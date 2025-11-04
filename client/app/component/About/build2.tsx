@@ -17,25 +17,14 @@ function Build2() {
               Built from Passion, Crafted for Generations.
             </h2>
 
-            {/* Images Container */}
-            <div className="relative w-full h-[35vh] sm:h-[40vh] md:h-[55vh] lg:h-[40vh] xl:h-[50vh] 2xl:h-[60vh] mt-4">
-              {/* Left Sofa Image - Bottom Left */}
-              <div className="absolute top-0 left-0 w-[60%] h-[70%] xl:w-[55%] xl:h-[60%] z-10">
+            {/* Images Container - Grid View */}
+            <div className="w-full mt-4">
+              <div className="relative w-full h-[25vh] sm:h-[40vh] md:h-[50vh] lg:h-[30vh] xl:h-[40vh] 2xl:h-[42vh]">
                 <Image
-                  src="/image/about/built/left.png"
-                  alt="Green modern sofa with ottoman"
+                  src="/image/about/built/Groupchair.png"
+                  alt="Furniture collection showcase"
                   fill
                   className="object-cover rounded-[16px] sm:rounded-[20px] md:rounded-[24px]"
-                />
-              </div>
-
-              {/* Right Sofa Image - Top Right */}
-              <div className="absolute right-1 top-17 md:top-28 lg:top-28 xl:top-30 xl:right-8 2xl:right-10 w-[50%] h-[60%] sm:w-[50%] sm:h-[65%] lg:w-[50%] lg:h-[60%] xl:w-[50%] xl:h-[55%] 2xl:w-[50%] 2xl:h-[55%] z-0">
-                <Image
-                  src="/image/about/built/rightchair.png"
-                  alt="Orange armchair with side table"
-                  fill
-                  className="object-cover  rounded-br-[63px] rounded-tl-[63px]"
                 />
               </div>
             </div>

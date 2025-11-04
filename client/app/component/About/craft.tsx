@@ -8,7 +8,7 @@ function Craft() {
         <div className="small-text text-[#0C0C0C80] font-poppins">
           What We Do
         </div>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-12 items-start">
           {/* Left Side - Content */}
           <div className="flex flex-col gap-4 lg:gap-2">
             <div className="flex flex-col gap-0 xl:gap-15 ">
@@ -29,7 +29,7 @@ function Craft() {
             </div>
           </div>
 
-          <div className="flex gap-4 w-full h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[70vh] xl:h-[50vh] 2xl:h-[50vh]">
+          <div className="flex gap-2 md:gap-4 w-full xl:w-[90%] h-[40vh] sm:h-[50vh] md:h-[50vh] lg:h-[70vh] xl:h-[50vh] 2xl:h-[60vh]">
             {/* Left Image  */}
             <div className="relative flex-1">
               <Image
