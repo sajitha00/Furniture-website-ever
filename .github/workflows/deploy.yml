@@ -124,14 +124,14 @@ jobs:
           # Encode to base64
           base64 .env > .env.b64
 
-      - name: Copy .env file to VPS
+      - name: Copy files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
-          source: ".env.b64"
+          source: ".env.b64,docker-compose.yml"
           target: ${{ secrets.VPS_DEPLOY_PATH || '/opt/furniture-website' }}
 
       - name: Deploy to VPS
@@ -145,14 +145,19 @@ jobs:
             # Navigate to deployment directory
             cd ${{ secrets.VPS_DEPLOY_PATH || '/opt/furniture-website' }}
             
-            echo "📥 Pulling latest code..."
-            git pull origin main
-            
-            echo "🔐 Setting up environment variables..."
+            echo " Setting up environment variables..."
             # Decode base64 .env file
             base64 -d .env.b64 > .env
             chmod 600 .env
             rm .env.b64
+            
+            echo "📋 Verifying docker-compose.yml..."
+            if [ ! -f docker-compose.yml ]; then
+              echo "❌ docker-compose.yml not found!"
+              exit 1
+            fi
+            
+            echo "✓ docker-compose.yml found"
             
             echo "🔑 Logging into Docker Hub..."
             echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ env.DOCKER_USERNAME }} --password-stdin
