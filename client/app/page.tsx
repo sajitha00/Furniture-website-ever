@@ -12,12 +12,14 @@ import { Navbar2 } from "./component/Navbar/Navbar2";
 import Tooltip from "./component/Tooltip/Tooltip";
 import Section09 from "./component/Home/Section09";
 import Footer from "./component/Footer/Footer";
+import ComingSoon from "./component/commingsoon";
 export default function Home() {
   return (
     <div>
-      <Navbar2 />
-      <div className="containerpaddin container mx-auto ">
-        <Section01 />
+      {/* <Navbar2 /> */}
+      <div className=" py-20 containerpaddin container mx-auto ">
+        <ComingSoon />
+        {/* <Section01 />
         <Section02 />
         <Section03 />
         <Section04 />
@@ -25,9 +27,9 @@ export default function Home() {
         <Section06 />
         <Section07 />
         <Section08 />
-        <Section09 />
+        <Section09 /> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

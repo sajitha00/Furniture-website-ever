@@ -6,7 +6,7 @@ function ComingSoon() {
   return (
     <div>
       {/* Navbar */}
-      <Navbar2 />
+      {/* <Navbar2 /> */}
 
       {/* Main Coming Soon Section */}
       <div className="mb-10">
@@ -59,7 +59,7 @@ function ComingSoon() {
                   Follow us:
                 </span>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/everwood.collection"
                   className="w-10 h-10 bg-[#F5F5F5] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#475158] transition-all duration-300 group"
                 >
                   <Image
@@ -103,7 +103,7 @@ function ComingSoon() {
                 {/* Top Left Image */}
                 <div className="relative rounded-lg overflow-hidden">
                   <Image
-                    src="/image/about/crafting/Rectangle 59.png"
+                    src="/image/about/crafting/1.jpg"
                     alt="Crafted furniture piece"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
@@ -113,7 +113,7 @@ function ComingSoon() {
                 {/* Top Right Image */}
                 <div className="relative rounded-lg overflow-hidden">
                   <Image
-                    src="/image/about/crafting/Rectangle 60.png"
+                    src="/image/about/crafting/2.jpg"
                     alt="Wooden furniture detail"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
@@ -123,7 +123,7 @@ function ComingSoon() {
                 {/* Bottom Spanning Image */}
                 <div className="relative col-span-2 rounded-lg overflow-hidden">
                   <Image
-                    src="/image/contact/form/Rectangle 65.png"
+                    src="/image/about/crafting/3.jpg"
                     alt="Modern living space"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
@@ -136,9 +136,7 @@ function ComingSoon() {
       </div>
 
       {/* Bottom Decorative Text (like Footer style) */}
-      <div className="">
-        
-      </div>
+      <div className=""></div>
     </div>
   );
 }
