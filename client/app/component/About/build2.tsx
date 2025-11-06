@@ -4,7 +4,11 @@ import Image from "next/image";
 function Build2() {
   return (
     <div className="margin-y">
-      <div className="containerpaddin container mx-auto">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        className="containerpaddin container mx-auto"
+      >
         {/* Who We Are Label */}
         <div className="small-text text-[#0C0C0C80] font-poppins">
           Who We Are

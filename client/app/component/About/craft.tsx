@@ -4,7 +4,11 @@ import Image from "next/image";
 function Craft() {
   return (
     <div className="margin-y">
-      <div className="containerpaddin container mx-auto">
+      <div
+        data-aos="fade-up"
+        fata-aos-duration="2000"
+        className="containerpaddin container mx-auto"
+      >
         <div className="small-text text-[#0C0C0C80] font-poppins">
           What We Do
         </div>
