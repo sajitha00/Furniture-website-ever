@@ -11,8 +11,15 @@ const firebaseConfig = {
 }
 
 // Validate that all required environment variables are set
-if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
-  throw new Error('Missing Firebase configuration. Please check your .env.local file.')
+const missingVars: string[] = []
+if (!firebaseConfig.apiKey) missingVars.push('NEXT_PUBLIC_FIREBASE_API_KEY')
+if (!firebaseConfig.authDomain) missingVars.push('NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN')
+if (!firebaseConfig.projectId) missingVars.push('NEXT_PUBLIC_FIREBASE_PROJECT_ID')
+
+if (missingVars.length > 0) {
+  const errorMessage = `Missing Firebase configuration variables: ${missingVars.join(', ')}. Please check your .env.local file and restart the Next.js dev server.`
+  console.error(errorMessage)
+  throw new Error(errorMessage)
 }
 
 // Initialize Firebase
