@@ -11,7 +11,7 @@ function Section04() {
                 <div className='overflow-hidden rounded-lg group cursor-pointer'>
                     <Image src="/image/Home/Rectanglek.png" alt="Section04" width={1520} height={400} className='w-[300px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
-                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-bold font-poppins'>
+                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
                 Modern Sofas
                 </div>
                 <div className='description'>
@@ -26,7 +26,7 @@ function Section04() {
                 <div className='overflow-hidden rounded-lg group cursor-pointer'>
                     <Image src="/image/Home/Rectanglekk.png" alt="Section04" width={1920} height={500} className='w-[1150px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
-                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-bold font-poppins'>
+                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
                 Classic Sofas
                 </div>
                 <div className='description'>
@@ -41,7 +41,7 @@ function Section04() {
                 <div className='overflow-hidden rounded-lg group cursor-pointer'>
                     <Image src="/image/Home/Rectanglekkk.png" alt="Section04" width={1920} height={500} className='w-[450px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
-                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-bold font-poppins'>
+                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
                 Contemporary 
                 </div>
                 <div className='description'>
@@ -56,7 +56,7 @@ function Section04() {
                 <div className='overflow-hidden rounded-lg group cursor-pointer'>
                     <Image src="/image/Home/Rectanglekkkk.png" alt="Section04" width={1920} height={500} className='w-[250px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
-                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-bold font-poppins'>
+                <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
                 Ectional Sofas
                 </div>
                 <div className='description'>

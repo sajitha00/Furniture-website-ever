@@ -17,7 +17,7 @@ function Section05() {
                         <img src="/image/Icon/one.png" alt="Section05Icon1" width={40} height={40} />
                     </div>
                     <div className='text-left'>
-                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px]'>
+                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px] font-medium font-poppins'>
                             Design Consultation
                         </div>
                         <div className='description text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]'>
@@ -30,7 +30,7 @@ function Section05() {
                         <img src="/image/Icon/two.png" alt="Section05Icon1" width={40} height={40} />
                     </div>
                     <div className='text-left'>
-                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px]'>
+                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px] font-medium font-poppins'>
                             Artisan Crafting
                         </div>
                         <div className='description text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]'>
@@ -43,7 +43,7 @@ function Section05() {
                         <img src="/image/Icon/three.png" alt="Section05Icon1" width={40} height={40} />
                     </div>
                     <div className='text-left'>
-                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px]'>
+                        <div className='text-[14px] my-2 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[28px] 2xl:text-[32px] font-medium font-poppins'>
                             Finishing Touches
                         </div>
                         <div className='description text-[14px]  sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]'>
