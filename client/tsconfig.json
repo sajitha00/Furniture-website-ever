@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/component/buttons/aboutus"  ],
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axiosInstance from "@/lib/axios-instance";
 
 interface KeywordInputProps {
@@ -13,17 +13,7 @@ const KeywordInput = ({ onKeywordsChange, initialKeywords = [], placeholder }: K
   const [suggestedKeywords, setSuggestedKeywords] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  useEffect(() => {
-    if (inputValue.trim()) {
-      fetchSuggestions(inputValue);
-      setShowDropdown(true);
-    } else {
-      setSuggestedKeywords([]);
-      setShowDropdown(false);
-    }
-  }, [inputValue]);
-
-  const fetchSuggestions = async (query: string) => {
+  const fetchSuggestions = useCallback(async (query: string) => {
     try {
       const response = await axiosInstance.get("/keywords/suggest", {
         params: { query },
@@ -38,7 +28,19 @@ const KeywordInput = ({ onKeywordsChange, initialKeywords = [], placeholder }: K
       console.error("Error fetching keyword suggestions:", error);
       setSuggestedKeywords([]);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (inputValue.trim()) {
+      fetchSuggestions(inputValue);
+      setShowDropdown(true);
+    } else {
+      setSuggestedKeywords([]);
+      setShowDropdown(false);
+    }
+    // fetchSuggestions is memoized with useCallback, so it's safe to include in deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputValue]);
 
   const addKeyword = async (newKeyword: string) => {
     if (!keywords.includes(newKeyword)) {

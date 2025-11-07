@@ -8,7 +8,7 @@ import Blog1 from '@/public/image/Blog/Blog1.png'
 import Blog2 from '@/public/image/Blog/Blog2.png'
 import BlogComponent from '../component/Blog/blog'
 
-function page() {
+function Page() {
     const [activeCategory, setActiveCategory] = useState('All')
     return (
         <div>
@@ -104,4 +104,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

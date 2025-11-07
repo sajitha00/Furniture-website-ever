@@ -11,10 +11,13 @@ interface ThumbnailProps {
 const Thumbnail = ({ onThumbnailUpload, initialThumbnail, isEdit }: ThumbnailProps) => {
   const [thumbnailUrl, setThumbnailUrl] = useState<string>(initialThumbnail || "");
 
+  // Sync state when initialThumbnail prop changes
   useEffect(() => {
-    if (initialThumbnail) {
+    if (initialThumbnail && initialThumbnail !== thumbnailUrl) {
       setThumbnailUrl(initialThumbnail);
     }
+    // This effect intentionally syncs prop to state, which is a valid use case
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialThumbnail]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {

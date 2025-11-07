@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Thumbnail from "./Thumbnail";
@@ -49,9 +49,9 @@ function QuillEditor() {
 
   // Quill configuration with full toolbar (direct quill usage)
   const editorRef = useRef<HTMLDivElement | null>(null);
-  const quillInstanceRef = useRef<any>(null);
+  const quillInstanceRef = useRef<{ root: { innerHTML: string }; on: (event: string, callback: () => void) => void } | null>(null);
 
-  const quillModules = {
+  const quillModules = useMemo(() => ({
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ["bold", "italic", "underline", "strike"],
@@ -66,13 +66,13 @@ function QuillEditor() {
       [{ size: ["small", false, "large", "huge"] }],
       [{ direction: "rtl" }]
     ]
-  } as const;
+  }), []);
 
-  const quillFormats = [
+  const quillFormats = useMemo(() => [
     "header", "bold", "italic", "underline", "strike", "blockquote",
     "code-block", "list", "indent", "link", "image", "video",
     "color", "background", "script", "font", "size", "align", "direction"
-  ];
+  ], []);
 
   // Initialize Quill and handle content changes (client-only)
   useEffect(() => {
@@ -90,9 +90,9 @@ function QuillEditor() {
           if (!isCancelled && editorRef.current) {
             quillInstanceRef.current = new Quill(editorRef.current, {
               theme: "snow",
-              modules: quillModules as any,
-              formats: quillFormats as any,
-            });
+              modules: quillModules,
+              formats: quillFormats,
+            }) as { root: { innerHTML: string }; on: (event: string, callback: () => void) => void };
             
             quillInstanceRef.current.on("text-change", () => {
               if (quillInstanceRef.current) {
@@ -115,7 +115,7 @@ function QuillEditor() {
       isCancelled = true;
       clearTimeout(timer);
     };
-  }, []);
+  }, [quillModules, quillFormats]);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);

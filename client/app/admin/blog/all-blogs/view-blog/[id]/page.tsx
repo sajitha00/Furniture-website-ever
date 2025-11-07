@@ -160,7 +160,20 @@ export default function QuillEditor() {
     if (!contentId) return;
     try {
       setIsSubmitting(true);
-      const payload: any = {
+      const payload: {
+        title: string;
+        content: string;
+        tags: string[];
+        categories: string[];
+        type: string;
+        location?: string;
+        time?: string;
+        thumbnail?: string;
+        mode: "DRAFT" | "PUBLISHED";
+        seoTitle?: string;
+        metaDescription?: string;
+        metaKeywords?: string[];
+      } = {
         title,
         content,
         tags: selectedTags,

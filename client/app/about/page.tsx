@@ -3,7 +3,6 @@ import Stats18k from "../component/About/18k";
 import { Navbar2 } from "../component/Navbar/Navbar2";
 import Build2 from "../component/About/build2";
 import Craft from "../component/About/craft";
-import From from "../component/About/from";
 import Consult from "../component/About/consult";
 import Bring from "../component/About/bring";
 import Footer from "../component/Footer/Footer";

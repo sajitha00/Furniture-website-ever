@@ -26,12 +26,12 @@ const AdminDashboardPage: React.FC = () => {
         console.log('Fetched blogs:', response);
         
         // Transform API response to match Blog type
-        const transformedBlogs: Blog[] = response.map((item: any) => ({
+        const transformedBlogs: Blog[] = response.map((item: { id: string; title?: string; thumbnail?: string; time?: string; createdAt?: string; mode?: string; content?: string }) => ({
           id: item.id,
           title: item.title || 'Untitled',
           thumbnailImage: item.thumbnail || '/image/placeholder.jpg',
           startTime: item.time ? new Date(item.time).toLocaleTimeString() : '',
-          date: item.time ? new Date(item.time).toLocaleDateString() : new Date(item.createdAt).toLocaleDateString(),
+          date: item.time ? new Date(item.time).toLocaleDateString() : (item.createdAt ? new Date(item.createdAt).toLocaleDateString() : new Date().toLocaleDateString()),
           status: item.mode === 'PUBLISHED' ? 'Published' : 'Draft',
           content: item.content || '',
         }));
