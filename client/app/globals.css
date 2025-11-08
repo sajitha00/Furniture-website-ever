@@ -154,3 +154,41 @@
   }
 }
 
+@keyframes reveal {
+  0% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.reveal-text {
+  overflow: hidden;
+
+ 
+}
+
+.reveal-text span {
+  display: block;
+  animation: reveal 2s cubic-bezier(0.77, 0, 0.175, 1) 0.5s both;
+}
+
+@keyframes reveal-down {
+  0% {
+    transform: translate(0, -100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.reveal-text-down {
+  overflow: hidden;
+
+}
+
+.reveal-text-down span {
+  display: block;
+  animation: reveal-down 2s cubic-bezier(0.77, 0, 0.175, 1) 0.5s both;
+}
