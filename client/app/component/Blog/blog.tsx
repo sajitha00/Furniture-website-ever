@@ -195,7 +195,7 @@ function blog({ selectedCategory = 'All' }: BlogProps) {
                 </div>
             </div>
             {isModalOpen && selectedBlog && (
-                <div className='fixed inset-0 z-50 flex items-center justify-center px-4 py-6'>
+                <div className='fixed inset-0 z-50 backdrop-blur-sm  flex items-center justify-center px-4 py-6'>
                     <div className='absolute inset-0 ' onClick={handleCloseModal} />
                     <div className='relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl'>
                         <button 
