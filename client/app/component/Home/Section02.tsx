@@ -53,7 +53,7 @@ function Section02() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:mt-[-50px]">
         <div className="col-span-3 relative">
           <Image
-            src="/image/Home/new.png"
+            src="/image/Home/HeroFinal.png"
             alt="Section02"
             width={1920}
             height={500}
