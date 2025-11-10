@@ -43,6 +43,7 @@ function Section02() {
       data-aos-duration="2000"
       className="margin-y"
     >
+      {/* k */}
       {/* Mobile: show tooltip block at the very top */}
       {/* <div className='flex sm:hidden mb-2 w-full flex-col items-center justify-center text-center'>
                 <Tooltip />
