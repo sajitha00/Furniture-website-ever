@@ -43,6 +43,7 @@ function Section02() {
       data-aos-duration="2000"
       className="margin-y"
     >
+      {/* k */}
       {/* Mobile: show tooltip block at the very top */}
       {/* <div className='flex sm:hidden mb-2 w-full flex-col items-center justify-center text-center'>
                 <Tooltip />
@@ -53,7 +54,7 @@ function Section02() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:mt-[-50px]">
         <div className="col-span-3 relative">
           <Image
-            src="/image/Home/new.png"
+            src="/image/Home/HeroFinal.png"
             alt="Section02"
             width={1920}
             height={500}
