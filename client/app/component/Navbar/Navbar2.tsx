@@ -124,12 +124,16 @@ function Navbar({ className }: { className?: string }) {
             </Link>
             <div className="border-t"></div>
             <div>
-              <div 
-                onClick={() => setCatalogOpen(!catalogOpen)}
-                className={`font-semibold mb-2 cursor-pointer flex items-center justify-between py-2 ${pathname?.startsWith('/Catalog') ? 'text-black font-bold' : 'text-gray-600'}`}
-              >
-                Catalog
-                <span className={`transition-transform ${catalogOpen ? 'rotate-180' : ''}`}>▼</span>
+              <div className={`font-semibold mb-2 flex items-center justify-between py-2 ${pathname?.startsWith('/Catalog') ? 'text-black font-bold' : 'text-gray-600'}`}>
+                <Link href="/Catalog" onClick={() => setMobileMenuOpen(false)} className="flex-1 cursor-pointer hover:text-black transition-colors">
+                  Catalog
+                </Link>
+                <button 
+                  onClick={() => setCatalogOpen(!catalogOpen)}
+                  className="cursor-pointer px-2"
+                >
+                  <span className={`transition-transform inline-block ${catalogOpen ? 'rotate-180' : ''}`}>▼</span>
+                </button>
               </div>
               {catalogOpen && (
                 <div className="flex flex-col gap-3 pl-4 mt-2">

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer2 from "../component/Footer/Footer2";
 import { Navbar2 } from "../component/Navbar/Navbar2";
 import Image from "next/image";
@@ -10,6 +10,10 @@ import BlogComponent from "../component/Blog/blog";
 
 function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
+  
+  useEffect(() => {
+    document.title = 'Blog Everwood collection';
+  }, []);
   return (
     <div className="font-poppins">
       <Navbar2 />
@@ -33,7 +37,7 @@ function Page() {
                 design, and sustainable living.
                 <span className="hidden lg:block" />
               </div>
-              <div className="flex flex-row gap-1 md:gap-6 w-full mt-4 overflow-x-auto md:overflow-x-visible scrollbar-hide">
+              {/* <div className="flex flex-row gap-1 md:gap-6 w-full mt-4 overflow-x-auto md:overflow-x-visible scrollbar-hide">
                 <button
                   onClick={() => setActiveCategory("All")}
                   className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
@@ -74,7 +78,7 @@ function Page() {
                 >
                   Wardrobes
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -18,15 +18,15 @@ function Seamless() {
           {/* Book Appointment Button */}
           <>
             {/* Mobile/SM: visible, full width */}
-            <div className="py-0 lg:py-0 md:hidden w-full">
+            <div className="py-0 lg:py-0 md:hidden flex justify-center">
               <a
                 href="https://calendar.app.google/2iiAARicQAcrX5m69"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full group bg-[#475158] text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90 inline-block"
+                className="group bg-[#475158] text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90 inline-block"
               >
-                <div className="flex items-center w-full">
-                  <div className="text-white description px-4 flex-1 text-center font-poppins">
+                <div className="flex items-center">
+                  <div className="text-white description px-8 font-poppins">
                     Book Appointment
                   </div>
                   <div className="text-white text-sm pr-1 py-1">

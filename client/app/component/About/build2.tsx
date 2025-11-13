@@ -62,12 +62,12 @@ function Build2() {
 
             {/* Our Collection Button */}
             <>
-              {/* Mobile/SM: visible, full width */}
-              <div className="py-4 lg:py-0 md:hidden w-full">
+              {/* Mobile/SM: visible, centered */}
+              <div className="py-4 lg:py-0 md:hidden flex justify-center">
                 <Link href="/Catalog">
-                  <button className="w-full group bg-[#475158] text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90">
-                    <div className="flex items-center w-full">
-                      <div className="text-white description px-4 flex-1 text-center font-poppins">
+                  <button className="group bg-[#475158] text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90">
+                    <div className="flex items-center">
+                      <div className="text-white description px-8 font-poppins">
                         Our Collection
                       </div>
                       <div className="text-white text-sm pr-1 py-1">

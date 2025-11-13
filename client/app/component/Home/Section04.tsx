@@ -7,8 +7,8 @@ function Section04() {
             <div data-aos="fade-up"
             data-aos-delay="100"
             data-aos-duration="2000">
-            <div className='flex flex-col gap-4  justify-center'>
-                <div className='overflow-hidden rounded-lg group cursor-pointer'>
+            <div className='flex flex-col gap-4 justify-center text-center md:text-left'>
+                <div className='overflow-hidden rounded-lg group cursor-pointer flex justify-center md:justify-start'>
                     <Image src="/image/Home/Rectanglek.png" alt="Section04" width={1520} height={400} className='w-[300px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
                 <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
@@ -22,8 +22,8 @@ function Section04() {
             <div data-aos="fade-up"
             data-aos-delay="400"
             data-aos-duration="2000">
-            <div className='flex flex-col gap-4'>
-                <div className='overflow-hidden rounded-lg group cursor-pointer'>
+            <div className='flex flex-col gap-4 text-center md:text-left'>
+                <div className='overflow-hidden rounded-lg group cursor-pointer flex justify-center md:justify-start'>
                     <Image src="/image/Home/Rectanglekk.png" alt="Section04" width={1920} height={500} className='w-[1150px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
                 <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
@@ -37,8 +37,8 @@ function Section04() {
             <div data-aos="fade-up"
             data-aos-delay="700"
             data-aos-duration="2000">
-            <div className='flex flex-col gap-4 justify-center'>
-                <div className='overflow-hidden rounded-lg group cursor-pointer'>
+            <div className='flex flex-col gap-4 justify-center text-center md:text-left'>
+                <div className='overflow-hidden rounded-lg group cursor-pointer flex justify-center md:justify-start'>
                     <Image src="/image/Home/Rectanglekkk.png" alt="Section04" width={1920} height={500} className='w-[450px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
                 <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>
@@ -52,8 +52,8 @@ function Section04() {
             <div data-aos="fade-up"
             data-aos-delay="1000"
             data-aos-duration="2000">
-            <div className='flex flex-col gap-4'>
-                <div className='overflow-hidden rounded-lg group cursor-pointer'>
+            <div className='flex flex-col gap-4 text-center md:text-left'>
+                <div className='overflow-hidden top-rounded-full group cursor-pointer flex justify-center md:justify-start'>
                     <Image src="/image/Home/Rectanglekkkk.png" alt="Section04" width={1920} height={500} className='w-[250px] h-auto transition-all duration-700 hover:scale-110' />
                 </div>
                 <div className='text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold font-poppins'>

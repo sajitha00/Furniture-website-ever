@@ -3,16 +3,16 @@ import React from "react";
 function bookacall() {
   return (
     <>
-      {/* Mobile/SM: visible, full width */}
-      <div className="py-4 lg:py-0 md:hidden w-full">
+      {/* Mobile/SM: visible, auto width */}
+      <div className="py-4 lg:py-0 md:hidden flex justify-center">
         <a
           href="https://calendar.app.google/2iiAARicQAcrX5m69"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full group bg-button text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90 inline-block"
+          className="group bg-button text-white rounded-full transition-all duration-300 hover:scale-[1.01] hover:bg-opacity-90 inline-block"
         >
-          <div className="flex items-center w-full">
-            <div className="text-white description px-4 flex-1 text-center">
+          <div className="flex items-center">
+            <div className="text-white description px-8">
               Book a Call
             </div>
             <div className="text-white text-sm pr-1 py-1">

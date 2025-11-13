@@ -37,10 +37,10 @@ function page() {
                             data-aos-delay="500"
                             data-aos-duration="2000">
                             <div className='grid grid-cols-1  lg:grid-cols-3 gap-4'>
-                                <div>
+                                <div className='hidden lg:block'>
                                     <Image src={Collection1} alt="Collection" className="w-full h-auto object-cover" />
                                 </div>
-                                <div>
+                                <div className='hidden lg:block'>
                                     <Image src={Collection2} alt="Collection" className="w-full h-auto object-cover" />
                                 </div>
                                 <div className='flex flex-col gap-4'>

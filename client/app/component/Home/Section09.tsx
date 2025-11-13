@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import Tooltip from '../Tooltip/Tooltip'
 
 const testimonials = [
@@ -25,14 +26,26 @@ const testimonials = [
 
 function Section09() {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [direction, setDirection] = useState(1) // 1 for next, -1 for previous
 
     const handlePrevious = () => {
+        setDirection(-1)
         setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
     }
 
     const handleNext = () => {
+        setDirection(1)
         setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
     }
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setDirection(1)
+            setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
+        }, 5000) // Auto-change every 5 seconds
+
+        return () => clearInterval(timer)
+    }, [])
 
     const currentTestimonial = testimonials[currentIndex]
 
@@ -42,17 +55,28 @@ function Section09() {
                 What Our Clients Say
             </div>
             <div className='margin-y'>
-                <div className='bg-[#EBEBEB] rounded-[36px] p-10 px-15'>
-                    <div className='description items-center justify-center text-center'>
-                        "{currentTestimonial.quote}"
-                    </div>
+                <div className='bg-[#EBEBEB] rounded-[36px] p-10 px-15 relative overflow-hidden'>
+                    <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                            key={currentIndex}
+                            custom={direction}
+                            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                        >
+                            <div className='description items-center justify-center text-center'>
+                                "{currentTestimonial.quote}"
+                            </div>
 
-                    <div className='description items-center justify-center text-center mt-4 font-bold'>
-                        {currentTestimonial.name}
-                    </div>
-                    <div className='description items-center justify-center text-center mt-4 '>
-                        {currentTestimonial.position}
-                    </div>
+                            <div className='description items-center justify-center text-center mt-4 font-bold'>
+                                {currentTestimonial.name}
+                            </div>
+                            <div className='description items-center justify-center text-center mt-4 '>
+                                {currentTestimonial.position}
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
                     <div className='flex flex-col mt-4 lg:mt-0 lg:flex-row justify-between items-center'>
                         <div>
                             <Tooltip />

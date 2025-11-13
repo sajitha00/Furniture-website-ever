@@ -9,7 +9,7 @@ const products = [
         price: '$126.00',
         category: 'Living',
         images: {
-            black: '/image/Home/Chair01.png',
+            black: '/image/category/FirstCard/35.png',
             gray: '/image/Home/Chair02.png',
             sage: '/image/Home/Chair03.png'
         }
@@ -72,9 +72,9 @@ const products = [
 ]
 
 const colorOptions = [
-    { id: 'black', bg: 'bg-black' },
-    { id: 'gray', bg: 'bg-gray-700' },
-    { id: 'sage', bg: 'bg-green-600', style: { backgroundColor: '#7B8F7E' } }
+    { id: 'black', name: 'Oak', bg: 'bg-black' },
+    { id: 'gray', name: 'Teak', bg: 'bg-gray-700' },
+    { id: 'sage', name: 'Mahogany', bg: 'bg-green-600', style: { backgroundColor: '#7B8F7E' } }
 ]
 
 function Section08({ selectedCategory }: { selectedCategory?: string } = {}) {
@@ -105,18 +105,24 @@ function Section08({ selectedCategory }: { selectedCategory?: string } = {}) {
                     <div key={product.id} className='relative'>
                         <Image src="/image/Home/Rectangle.png" alt="Section08" width={1920} height={500} className='w-full' />
                         {/* Color Swatches */}
-                        <div className='absolute left-2 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-100'>
+                        <div className='absolute left-2 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10'>
                             {colorOptions.map((color) => (
-                                <button
-                                    key={color.id}
-                                    onClick={() => handleColorChange(product.id, color.id)}
-                                    className={`w-6 h-6 rounded-full ${color.bg} border-2 ${
-                                        selectedColors[product.id] === color.id
-                                            ? 'border-white ring-4 ring-blue-400 scale-110'
-                                            : 'border-white'
-                                    } shadow-md cursor-pointer hover:scale-110 transition-all`}
-                                    style={color.style}
-                                ></button>
+                                <div key={color.id} className='relative group/tooltip'>
+                                    <button
+                                        onClick={() => handleColorChange(product.id, color.id)}
+                                        className={`w-6 h-6 rounded-full ${color.bg} border-2 ${
+                                            selectedColors[product.id] === color.id
+                                                ? 'border-white ring-4 ring-blue-400 scale-110'
+                                                : 'border-white'
+                                        } shadow-md cursor-pointer hover:scale-110 transition-all`}
+                                        style={color.style}
+                                    ></button>
+                                    <div className={`absolute left-full ml-2 top-1/2 -translate-y-1/2 transition-opacity pointer-events-none bg-black text-white text-xs px-3 py-1 rounded-full whitespace-nowrap z-50 ${
+                                        selectedColors[product.id] === color.id ? 'opacity-100' : 'opacity-0 group-hover/tooltip:opacity-100'
+                                    }`}>
+                                        {color.name}
+                                    </div>
+                                </div>
                             ))}
                         </div>
                         <div className='absolute top-0 left-0 right-0 flex  flex-col items-center justify-center h-full  '>

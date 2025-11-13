@@ -68,9 +68,9 @@ function ComingSoon() {
 
               {/* Main Title */}
               <h1 className="title font-poppins leading-tight">
-                Something <span className="font-semibold">Beautiful</span>{" "}
+                We Are <span className="font-semibold">Building</span>{" "}
                 <br />
-                Is Coming Soon
+                Something Special
               </h1>
 
               {/* Success/Error Message */}
