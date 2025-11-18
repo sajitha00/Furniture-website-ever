@@ -50,10 +50,10 @@ function CtLogo() {
             </div>
             <div className="description text-[14px] sm:text-[15px] md:text-[16px] font-poppins text-[#878787]">
               <a
-                href="tel:+7634565233334"
+                href="tel:+94765313619"
                 className="description text-[14px] sm:text-[15px] md:text-[16px] font-poppins text-[#878787] hover:text-black transition-colors duration-300"
               >
-                +76 3456523334
+                +94 76 531 3619
               </a>
             </div>
           </div>
