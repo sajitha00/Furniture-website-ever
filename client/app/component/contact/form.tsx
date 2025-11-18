@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import axios from "axios";
+import { MdOutlineWhatsapp } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
 
 // Zod validation schema
 const contactSchema = z.object({
@@ -270,16 +273,12 @@ function Form() {
                 {/* Social Media Icons */}
                 <div className="flex flex-row gap-4">
                   <a
-                    href="#"
+                    href="https://wa.me/94765313619"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 flex items-center justify-center hover:scale-105"
                   >
-                    <Image
-                      src="/image/contact/form/whatsapp.png"
-                      alt="WhatsApp"
-                      width={20}
-                      height={20}
-                      className="w-8 h-8"
-                    />
+                    <MdOutlineWhatsapp className="w-8 h-8 md:w-9 md:h-9 text-[#000000]" />
                   </a>
                   <a
                     href="https://www.instagram.com/everwood.collection"
@@ -287,13 +286,7 @@ function Form() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 flex items-center justify-center hover:scale-105"
                   >
-                    <Image
-                      src="/image/contact/form/instagram.png"
-                      alt="Instagram"
-                      width={20}
-                      height={20}
-                      className="w-8 h-8"
-                    />
+                    <FaInstagram className="w-8 h-8 md:w-9 md:h-9 text-[#000000]" />
                   </a>
                   <a
                     href="https://www.facebook.com/everwoodcollection"
@@ -301,13 +294,7 @@ function Form() {
                     rel="noopener noreferrer"
                     className="w-10 h-10 flex items-center justify-center hover:scale-105"
                   >
-                    <Image
-                      src="/image/contact/form/facebook.png"
-                      alt="Facebook"
-                      width={20}
-                      height={20}
-                      className="w-8 h-8"
-                    />
+                    <FaFacebook className="w-8 h-8 md:w-9 md:h-9 text-[#000000]" />
                   </a>
                 </div>
               </div>
