@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { MdOutlineWhatsapp } from "react-icons/md";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 function ComingSoon() {
   const [email, setEmail] = useState("");
@@ -68,8 +70,7 @@ function ComingSoon() {
 
               {/* Main Title */}
               <h1 className="title font-poppins leading-tight">
-                We Are <span className="font-semibold">Building</span>{" "}
-                <br />
+                We Are <span className="font-semibold">Building</span> <br />
                 Something Special
               </h1>
 
@@ -121,17 +122,12 @@ function ComingSoon() {
                   Follow us:
                 </span>
                 <a
-                  href="#"
+                  href="https://wa.me/94765313619"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#F5F5F5] rounded-full flex items-center justify-center hover:scale-110 hover:bg-[#475158]/20 transition-all duration-300 group"
                 >
-                  <Image
-                    src="/image/contact/form/whatsapp.png"
-                    alt="WhatsApp"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
-                  />
+                  <MdOutlineWhatsapp className="w-5 h-5 lg:w-6 lg:h-6 text-[#000000]" />
                 </a>
                 <a
                   href="https://www.instagram.com/everwood.collection"
@@ -139,13 +135,7 @@ function ComingSoon() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#F5F5F5] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#475158]/20 transition-all duration-300 group"
                 >
-                  <Image
-                    src="/image/contact/form/instagram.png"
-                    alt="Instagram"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
-                  />
+                  <FaInstagram className="w-5 h-5 lg:w-6 lg:h-6 text-[#000000]" />
                 </a>
                 <a
                   href="https://web.facebook.com/everwoodcollection?_rdc=1&_rdr#"
@@ -153,13 +143,7 @@ function ComingSoon() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-[#F5F5F5] rounded-full flex items-center justify-center hover:scale-105 hover:bg-[#475158]/20 transition-all duration-300 group"
                 >
-                  <Image
-                    src="/image/contact/form/facebook.png"
-                    alt="Facebook"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
-                  />
+                  <FaFacebook className="w-5 h-5 lg:w-6 lg:h-6 text-[#000000]" />
                 </a>
               </div>
             </div>
