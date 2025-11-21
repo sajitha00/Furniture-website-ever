@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 
 import Footer2 from '../component/Footer/Footer2'
 import Image from 'next/image'
-import Collection1 from '@/public/image/Collection/Collection1.png'
-import Collection2 from '@/public/image/Collection/Collection2.png'
-import Collection3 from '@/public/image/Collection/Collection3.png'
-import Collection4 from '@/public/image/Collection/Collection4.png'
 import Section08 from '../component/Home/Section08'
 import { Navbar2 } from '../component/Navbar/Navbar2'
 
@@ -33,24 +29,19 @@ function page() {
                     </div>
 
                     <div className='margin-y'>
-                        <div data-aos="fade-up"
+                        <div 
+                            data-aos="fade-up"
                             data-aos-delay="500"
-                            data-aos-duration="2000">
-                            <div className='grid grid-cols-1  lg:grid-cols-3 gap-4'>
-                                <div className='hidden lg:block'>
-                                    <Image src={Collection1} alt="Collection" className="w-full h-auto object-cover" />
-                                </div>
-                                <div className='hidden lg:block'>
-                                    <Image src={Collection2} alt="Collection" className="w-full h-auto object-cover" />
-                                </div>
-                                <div className='flex flex-col gap-4'>
-                                    <div>
-                                        <Image src={Collection3} alt="Collection" className="w-full h-auto object-cover" />
-                                    </div>
-                                    <div>
-                                        <Image src={Collection4} alt="Collection" className="w-full h-auto object-cover" />
-                                    </div>
-                                </div>
+                            data-aos-duration="2000"
+                        >
+                            <div>
+                                <Image 
+                                    src="/image/Collection/Collection4.png"
+                                    alt="Collection 4"
+                                    width={2000}
+                                    height={1200}
+                                    quality={80}
+                                />
                             </div>
                         </div>
                     </div>
@@ -59,10 +50,10 @@ function page() {
                     data-aos-duration="2000">
                     <div className='margin-y'>
                         <div className="lg:flex flex-row items-center justify-between gap-4">
-                            <div className="subtitle text-left">
+                            {/*<div className="subtitle text-left">
                                 Curated Collections
-                            </div>
-                            <div className='flex flex-row gap-2 md:gap-4 w-full lg:w-auto mt-4 lg:mt-0 overflow-x-auto scrollbar-hide'>
+                            </div>*/}
+                            <div className='flex flex-row justify-center gap-2 md:gap-4 w-full mt-4 lg:mt-0'>
                                 <button 
                                     onClick={() => setActiveCategory('All')}
                                     className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
@@ -102,6 +93,16 @@ function page() {
                                     }`}
                                 >
                                     Wardrobes
+                                </button>
+                                <button 
+                                    onClick={() => setActiveCategory('Kitchen')}
+                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                                        activeCategory === 'Kitchen' 
+                                            ? 'bg-button text-white' 
+                                            : 'text-button hover:bg-button hover:text-white'
+                                    }`}
+                                >
+                                    Kitchen
                                 </button>
                             </div>
                         </div>

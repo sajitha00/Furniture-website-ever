@@ -18,7 +18,7 @@ const products = [
         id: 2, 
         name: 'Modern Sofa', 
         price: '$326.00',
-        category: 'Living',
+        category: 'Kitchen',
         images: {
             black: '/image/category/ThirdCard/Chair 01.png',
             gray: '/image/category/ThirdCard/Chair 02.png',

@@ -107,7 +107,7 @@ function Consult() {
           >
             <div className="overflow-hidden rounded-full  group cursor-pointer ">
               <Image
-                src="/image/about/concept/1.png"
+                src="/image/about/concept/1The consultation.png"
                 alt="Consultation"
                 width={500}
                 height={500}
@@ -135,7 +135,7 @@ function Consult() {
           >
             <div className="overflow-hidden rounded-3xl  group cursor-pointer">
               <Image
-                src="/image/about/concept/2.png"
+                src="/image/about/concept/2Material and Selection.png"
                 alt="Design Blueprint"
                 width={500}
                 height={375}
@@ -163,7 +163,7 @@ function Consult() {
           >
             <div className="overflow-hidden rounded-bl-4xl rounded-tr-4xl    group cursor-pointer">
               <Image
-                src="/image/about/concept/3.png"
+                src="/image/about/concept/3Design and Quotation.png"
                 alt="Artisan Production image"
                 width={500}
                 height={667}
@@ -191,7 +191,7 @@ function Consult() {
           >
             <div className="overflow-hidden rounded-4xl  group cursor-pointer">
               <Image
-                src="/image/about/concept/4.png"
+                src="/image/about/concept/4The Crafting Process.png"
                 alt="Finishing Touches"
                 width={500}
                 height={500}

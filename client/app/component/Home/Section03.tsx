@@ -16,7 +16,7 @@ function Section03() {
                     </div>
                 </div>
                 <div className="description w-auto ">
-                    Founded in 2025, The Everwood Collection was born from a shared passion <span className="hidden lg:block" /> for craftsmanship, timeless design, and the belief that furniture should be as <span className="hidden lg:block" /> unique as the homes it inhabits.
+                    The Everwood Collection designs and builds custom wood furniture that  <span className="hidden lg:block" /> transforms everyday spaces into warm, modern homes – crafted by Sri Lankan  <span className="hidden lg:block" /> artisans, made to last for generations.
                 </div>
             </div>
         </div>

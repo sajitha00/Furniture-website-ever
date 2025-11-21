@@ -81,7 +81,6 @@ function Section02() {
             <video
               src="/image/Home/Herovideo.mp4"
               autoPlay
-              loop
               muted
               playsInline
               className="w-full h-full object-cover rounded-lg"

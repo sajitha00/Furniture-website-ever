@@ -11,7 +11,7 @@ function Section07() {
                 Our Signature Creations 
                 </div>
                 <div className="description w-auto ">
-                Founded in 2025, The Everwood Collection was born from a shared passion for  <span className="hidden lg:block" /> for craftsmanship, timeless design, and the belief that furniture should be as <span className="hidden lg:block" /> unique as the homes it inhabits.
+                At The Everwood Collection, furniture is never “just furniture.” Each piece is a   <span className="hidden lg:block" />  collaboration between designer, artisan, and client – built to outlast trends and  <span className="hidden lg:block" />  tell your story over time.
                 </div>
             </div>
             <Semore />
