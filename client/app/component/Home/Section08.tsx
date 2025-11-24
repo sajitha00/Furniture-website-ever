@@ -5,7 +5,7 @@ import Image from 'next/image'
 const products = [
     { 
         id: 1, 
-        name: 'Yellow Chair', 
+        name: 'Z-chair', 
         price: '$126.00',
         category: 'Living',
         images: {
@@ -16,7 +16,7 @@ const products = [
     },
     { 
         id: 2, 
-        name: 'Modern Sofa', 
+        name: 'Counter chair', 
         price: '$326.00',
         category: 'Kitchen',
         images: {
@@ -27,7 +27,7 @@ const products = [
     },
     { 
         id: 3, 
-        name: 'Bed Frame', 
+        name: 'Double Dresser', 
         price: '$526.00',
         category: 'Bedroom',
         images: {
@@ -38,7 +38,7 @@ const products = [
     },
     { 
         id: 4, 
-        name: 'Wardrobe Set', 
+        name: 'Drawers Chest', 
         price: '$826.00',
         category: 'Wardrobes',
         images: {
@@ -49,7 +49,7 @@ const products = [
     },
     { 
         id: 5, 
-        name: 'Dining Chair', 
+        name: 'Sideboard', 
         price: '$156.00',
         category: 'Living',
         images: {
@@ -60,7 +60,7 @@ const products = [
     },
     { 
         id: 6, 
-        name: 'Bedroom Cabinet', 
+        name: 'Media Console', 
         price: '$426.00',
         category: 'Bedroom',
         images: {
@@ -82,7 +82,7 @@ const products = [
     },
     { 
         id: 8, 
-        name: 'Bedroom Cabinet', 
+        name: 'Coffee Table', 
         price: '$426.00',
         category: 'Bedroom',
         images: {
