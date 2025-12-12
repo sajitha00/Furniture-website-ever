@@ -28,7 +28,7 @@ export const MenuItem = ({
   const content = (
     <motion.p
       transition={{ duration: 0.3 }}
-      className={`cursor-pointer hover:text-black transition-colors dark:text-white ${isActive ? 'text-black font-bold' : 'text-gray-600'}`}
+      className={`cursor-pointer hover:text-black transition-colors dark:text-white whitespace-nowrap text-xs lg:text-sm xl:text-base ${isActive ? 'text-black font-bold' : 'text-gray-600'}`}
     >
       {item}
     </motion.p>
@@ -82,7 +82,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className={`relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex flex-wrap justify-center gap-x-1.5 2xl:gap-x-4 px-2 2xl:px-8 py-4 2xl:py-6 ${className || ''}`}
+      className={`relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex flex-wrap justify-center gap-x-1.5 lg:gap-x-2 xl:gap-x-3 2xl:gap-x-4 px-2 lg:px-4 xl:px-6 2xl:px-8 py-3 lg:py-4 xl:py-5 2xl:py-6 ${className || ''}`}
     >
       {children}
     </nav>
