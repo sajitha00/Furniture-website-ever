@@ -208,6 +208,9 @@ jobs:
             echo "🔍 Checking API container environment..."
             docker exec furniture-api-container printenv | grep -E "DATABASE_URL|JWT_SECRET|NODE_ENV|ALLOWED_ORIGINS|BREVO_API_KEY|BREVO_SENDER_EMAIL|ADMIN_EMAIL|RECAPTCHA_SECRET_KEY" | sed 's/DATABASE_URL=.*/DATABASE_URL=***MASKED***/' | sed 's/JWT_SECRET=.*/JWT_SECRET=***MASKED***/' | sed 's/BREVO_API_KEY=.*/BREVO_API_KEY=***MASKED***/' | sed 's/RECAPTCHA_SECRET_KEY=.*/RECAPTCHA_SECRET_KEY=***MASKED***/' || echo "Could not check environment"
             
+            echo "🔍 Checking Client container environment..."
+            docker exec furniture-client-container printenv | grep -E "NODE_ENV|NEXT_PUBLIC_API_BASE_URL|NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_RECAPTCHA_SITE_KEY" || echo "Could not check client environment"
+            
             echo "🧹 Cleaning up old images..."
             # Remove dangling images (untagged)
             docker image prune -f
