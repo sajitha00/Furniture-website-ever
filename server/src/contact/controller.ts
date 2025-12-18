@@ -48,10 +48,12 @@ export const submitContactForm = async (req: Request, res: Response) => {
       message: "Thank you for contacting us! We will get back to you soon.",
     });
   } catch (error) {
-    console.error("Contact form submission error:", error);
+    let message = "Failed to send your message. Please try again later.";
+    if (error instanceof Error) message = error.message;
+
     return res.status(500).json({
       success: false,
-      message: "Failed to send your message. Please try again later.",
+      message,
     });
   }
 };
