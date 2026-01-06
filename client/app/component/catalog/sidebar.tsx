@@ -32,6 +32,20 @@ export default function CatalogSidebar({
     const [woodTypeOpen, setWoodTypeOpen] = useState(true)
     const [fabricTypeOpen, setFabricTypeOpen] = useState(true)
 
+    // Price range constants
+    const PRICE_MIN = 23.03
+    const PRICE_MAX = 1000
+
+    // Convert actual price to slider value (0-100)
+    const priceToSlider = (price: number) => {
+        return ((price - PRICE_MIN) / (PRICE_MAX - PRICE_MIN)) * 100
+    }
+
+    // Convert slider value (0-100) to actual price
+    const sliderToPrice = (sliderValue: number) => {
+        return (sliderValue / 100) * (PRICE_MAX - PRICE_MIN) + PRICE_MIN
+    }
+
     const updateFilter = (category: keyof FilterState, value: string | [number, number] | string[] | Record<string, string>) => {
         const newFilters = { ...localFilters, [category]: value }
         setLocalFilters(newFilters)
@@ -59,7 +73,7 @@ export default function CatalogSidebar({
         const defaultValues: FilterState = {
             availability: [],
             productType: [],
-            priceRange: [23.03, 70.22],
+            priceRange: [PRICE_MIN, PRICE_MAX],
             finish: [],
             woodType: [],
             fabricType: [],
@@ -72,7 +86,7 @@ export default function CatalogSidebar({
         const value = localFilters[category]
         if (category === 'priceRange') {
             const priceRange = value as [number, number]
-            return priceRange[0] !== 23.03 || priceRange[1] !== 70.22
+            return priceRange[0] !== PRICE_MIN || priceRange[1] !== PRICE_MAX
         }
         if (category === 'fabricColors') {
             const fabricColors = value as Record<string, string>
@@ -233,11 +247,12 @@ export default function CatalogSidebar({
             <div className="flex items-center gap-2">
                 <input
                     type="number"
-                    min="0"
-                    max="1000"
+                    min={PRICE_MIN}
+                    max={PRICE_MAX}
+                    step="0.01"
                     value={localFilters.priceRange[0].toFixed(2)}
                     onChange={(e) => {
-                        const newMin = Math.min(Number(e.target.value), localFilters.priceRange[1])
+                        const newMin = Math.min(Math.max(Number(e.target.value), PRICE_MIN), localFilters.priceRange[1])
                         updateFilter('priceRange', [newMin, localFilters.priceRange[1]])
                     }}
                     className="w-24 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-button focus:border-transparent"
@@ -245,11 +260,12 @@ export default function CatalogSidebar({
                 <span className="text-gray-400">-</span>
                 <input
                     type="number"
-                    min="0"
-                    max="1000"
+                    min={PRICE_MIN}
+                    max={PRICE_MAX}
+                    step="0.01"
                     value={localFilters.priceRange[1].toFixed(2)}
                     onChange={(e) => {
-                        const newMax = Math.max(Number(e.target.value), localFilters.priceRange[0])
+                        const newMax = Math.max(Math.min(Number(e.target.value), PRICE_MAX), localFilters.priceRange[0])
                         updateFilter('priceRange', [localFilters.priceRange[0], newMax])
                     }}
                     className="w-24 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-button focus:border-transparent"
@@ -265,8 +281,8 @@ export default function CatalogSidebar({
                 <div
                     className="absolute h-2 bg-black rounded-lg"
                     style={{
-                        left: `${(localFilters.priceRange[0] / 100) * 100}%`,
-                        width: `${((localFilters.priceRange[1] - localFilters.priceRange[0]) / 100) * 100}%`,
+                        left: `${priceToSlider(localFilters.priceRange[0])}%`,
+                        width: `${priceToSlider(localFilters.priceRange[1]) - priceToSlider(localFilters.priceRange[0])}%`,
                     }}
                 ></div>
                 
@@ -275,9 +291,12 @@ export default function CatalogSidebar({
                     type="range"
                     min="0"
                     max="100"
-                    value={localFilters.priceRange[0]}
+                    step="0.1"
+                    value={priceToSlider(localFilters.priceRange[0])}
                     onChange={(e) => {
-                        const newMin = Math.min(Number(e.target.value), localFilters.priceRange[1])
+                        const sliderValue = Number(e.target.value)
+                        const newPrice = sliderToPrice(sliderValue)
+                        const newMin = Math.min(newPrice, localFilters.priceRange[1])
                         updateFilter('priceRange', [newMin, localFilters.priceRange[1]])
                     }}
                     className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-10"
@@ -291,9 +310,12 @@ export default function CatalogSidebar({
                     type="range"
                     min="0"
                     max="100"
-                    value={localFilters.priceRange[1]}
+                    step="0.1"
+                    value={priceToSlider(localFilters.priceRange[1])}
                     onChange={(e) => {
-                        const newMax = Math.max(Number(e.target.value), localFilters.priceRange[0])
+                        const sliderValue = Number(e.target.value)
+                        const newPrice = sliderToPrice(sliderValue)
+                        const newMax = Math.max(newPrice, localFilters.priceRange[0])
                         updateFilter('priceRange', [localFilters.priceRange[0], newMax])
                     }}
                     className="absolute w-full h-2 bg-transparent appearance-none cursor-pointer z-10"

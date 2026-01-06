@@ -149,7 +149,7 @@ function Page() {
     const [filters, setFilters] = useState<FilterState>({
         availability: [],
         productType: [],
-        priceRange: [23.03, 70.22],
+        priceRange: [23.03, 1000],
         finish: [],
         woodType: [],
         fabricType: [],
@@ -220,7 +220,7 @@ function Page() {
         })
         
         // Price Range filter
-        if (filters.priceRange[0] !== 23.03 || filters.priceRange[1] !== 70.22) {
+        if (filters.priceRange[0] !== 23.03 || filters.priceRange[1] !== 1000) {
             activeFilters.push({
                 id: 'priceRange',
                 label: `$${filters.priceRange[0].toFixed(0)}-${filters.priceRange[1].toFixed(0)}`,
@@ -239,7 +239,7 @@ function Page() {
         const newFilters = { ...filters }
         
         if (category === 'priceRange') {
-            newFilters.priceRange = [23.03, 70.22]
+            newFilters.priceRange = [23.03, 1000]
         } else {
             const currentArray = newFilters[category] as string[]
             newFilters[category] = currentArray.filter(item => item !== value) as any
@@ -253,7 +253,7 @@ function Page() {
         setFilters({
             availability: [],
             productType: [],
-            priceRange: [23.03, 70.22],
+            priceRange: [23.03, 1000],
             finish: [],
             woodType: [],
             fabricType: [],
