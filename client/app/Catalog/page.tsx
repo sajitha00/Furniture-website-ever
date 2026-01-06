@@ -1,173 +1,361 @@
 'use client'
-import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-
-import Footer2 from '../component/Footer/Footer2'
-import Image from 'next/image'
-import Section08 from '../component/Home/Section08'
+import React, { useState } from 'react'
 import { Navbar2 } from '../component/Navbar/Navbar2'
+import Footer2 from '../component/Footer/Footer2'
+import ProductCard from '../component/catalog/card'
+import CatalogHeader from '../component/catalog/header'
+import CatalogSidebar, { FilterState } from '../component/catalog/sidebar'
+import { Product } from '../component/catalog/type'
 
-function CatalogPageContent() {
-    const router = useRouter()
-    const searchParams = useSearchParams()
-    const categoryMap = useMemo(
-        () =>
-            new Map(
-                ['All', 'Living', 'Bedroom', 'Wardrobes', 'Kitchen'].map((label) => [
-                    label.toLowerCase(),
-                    label,
-                ])
-            ),
-        []
-    )
-    const [activeCategory, setActiveCategory] = useState('All')
 
-    useEffect(() => {
-        const param = searchParams.get('category')
-        if (!param) {
-            setActiveCategory('All')
-            return
+const products: Product[] = [
+    {
+        id: 1,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Living',
+        images: {
+            black: '/image/category/SecondCaard/Rectangle 01.png',
+            gray: '/image/category/SecondCaard/Rectangle 02.png',
         }
+    },
+    {
+        id: 2,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Kitchen',
+        images: {
+            black: '/image/category/ThirdCard/Chair 01.png',
+            gray: '/image/category/ThirdCard/Chair 02.png',
+        }
+    },
+    {
+        id: 3,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'sold-out',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/FourthCard/Cupboard 01.png',
+            gray: '/image/category/FourthCard/Cupboard 02.png',
+        }
+    },
+    {
+        id: 4,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Wardrobes',
+        images: {
+            black: '/image/category/FifthCard/DrawersChest 01.png',
+            gray: '/image/category/FifthCard/DrawersChest 02.png',
+        }
+    },
+    {
+        id: 5,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Living',
+        images: {
+            black: '/image/category/SixthCard/SideBoard 01.png',
+            gray: '/image/category/SixthCard/SideBoard 02.png',
+        }
+    },
+    {
+        id: 6,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/SeventhCard/TV_console 01.png',
+            gray: '/image/category/SeventhCard/TV_console 02.png',
+        }
+    },
+    {
+        id: 7,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/EighthCard/Chair 03.png',
+            gray: '/image/category/EighthCard/Chair 04.png',
+        }
+    },
+    {
+        id: 8,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/NinethCard/Table 01.png',
+            gray: '/image/category/NinethCard/Table 02.png',
+        }
+    },
+    {
+        id: 9,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/SeventhCard/TV_console 01.png',
+            gray: '/image/category/SeventhCard/TV_console 02.png',
+        }
+    },
+    {
+        id: 10,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/EighthCard/Chair 03.png',
+            gray: '/image/category/EighthCard/Chair 04.png',
+        }
+    },
+    {
+        id: 11,
+        name: 'Black Sofa Chair',
+        price: '$126.00',
+        originalPrice: '$136.00',
+        status: 'in-stock',
+        category: 'Bedroom',
+        images: {
+            black: '/image/category/NinethCard/Table 01.png',
+            gray: '/image/category/NinethCard/Table 02.png',
+        }
+    },
+]
 
-        const matchedCategory = categoryMap.get(param.toLowerCase())
-        if (matchedCategory) {
-            setActiveCategory(matchedCategory)
+function Page() {
+    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+    const [selectedCategory, setSelectedCategory] = useState('All')
+    const [filters, setFilters] = useState<FilterState>({
+        availability: [],
+        productType: [],
+        priceRange: [23.03, 70.22],
+        finish: [],
+        woodType: [],
+        fabricType: [],
+        fabricColors: {},
+     
+    })
+
+
+   // Filter products based on category and filters
+   const filteredProducts = products.filter((product) => {
+    // Category filter
+    if (selectedCategory !== 'All' && product.category !== selectedCategory) {
+        return false
+    }
+
+    // Availability filter
+    if (filters.availability.length > 0) {
+        const isInStock = product.status === 'in-stock'
+        const hasInStock = filters.availability.includes('In Stock')
+        const hasOutOfStock = filters.availability.includes('Out Of Stock')
+        
+        if (hasInStock && hasOutOfStock) {
+            // Show all
+        } else if (hasInStock && !isInStock) {
+            return false
+        } else if (hasOutOfStock && isInStock) {
+            return false
+        } else if (filters.availability.length > 0 && !hasInStock && !hasOutOfStock) {
+            return false
+        }
+    }
+
+    return true
+})
+
+    // Get active filters for display
+    const getActiveFilters = () => {
+        const activeFilters: Array<{ id: string; label: string; category: keyof FilterState; value: string }> = []
+        
+        // Availability filters
+        filters.availability.forEach((item) => {
+            activeFilters.push({
+                id: `availability-${item}`,
+                label: item,
+                category: 'availability',
+                value: item
+            })
+        })
+        
+        // Product Type filters
+        filters.productType.forEach((item) => {
+            activeFilters.push({
+                id: `productType-${item}`,
+                label: item,
+                category: 'productType',
+                value: item
+            })
+        })
+        
+        // Wood Type filters
+        filters.woodType.forEach((item) => {
+            activeFilters.push({
+                id: `woodType-${item}`,
+                label: item,
+                category: 'woodType',
+                value: item
+            })
+        })
+        
+        // Price Range filter
+        if (filters.priceRange[0] !== 23.03 || filters.priceRange[1] !== 70.22) {
+            activeFilters.push({
+                id: 'priceRange',
+                label: `$${filters.priceRange[0].toFixed(0)}-${filters.priceRange[1].toFixed(0)}`,
+                category: 'priceRange',
+                value: 'priceRange'
+            })
+        }
+        
+        return activeFilters
+    }
+
+    const activeFilters = getActiveFilters()
+
+    // Remove individual filter
+    const removeFilter = (category: keyof FilterState, value: string) => {
+        const newFilters = { ...filters }
+        
+        if (category === 'priceRange') {
+            newFilters.priceRange = [23.03, 70.22]
         } else {
-            setActiveCategory('All')
+            const currentArray = newFilters[category] as string[]
+            newFilters[category] = currentArray.filter(item => item !== value) as any
         }
-    }, [categoryMap, searchParams])
+        
+        setFilters(newFilters)
+    }
 
-    const handleCategorySelect = useCallback(
-        (category: string) => {
-            setActiveCategory(category)
+    // Clear all filters
+    const clearAllFilters = () => {
+        setFilters({
+            availability: [],
+            productType: [],
+            priceRange: [23.03, 70.22],
+            finish: [],
+            woodType: [],
+            fabricType: [],
+            fabricColors: {},
+        })
+    }
 
-            const params = new URLSearchParams(searchParams.toString())
-            if (category === 'All') {
-                params.delete('category')
-            } else {
-                params.set('category', category.toLowerCase())
-            }
 
-            const query = params.toString()
-            router.replace(`/Catalog${query ? `?${query}` : ''}`, { scroll: false })
-        },
-        [router, searchParams]
-    )
     return (
-        <div className="font-poppins">
+        <div className="font-poppins bg-white min-h-screen">
             <Navbar2 />
+            
+            <div className="containerpaddin container mx-auto py-8 md:py-12">
+                {/* Header Section */}
+                <CatalogHeader
+                    viewMode={viewMode}
+                    selectedCategory={selectedCategory}
+                    onViewModeChange={setViewMode}
+                    onCategoryChange={setSelectedCategory}
+                />
 
-            <div className='containerpaddin container mx-auto'>
-                <div className='margin-y'>
-                    <div data-aos="fade-up"
-                        suppressHydrationWarning
-                        data-aos-delay="100"
-                        data-aos-duration="2000">
-                        <div className="lg:flex flex-row items-center justify-between gap-4">
-                            <div className="subtitle text-left">
-                                Curated Creations for the   <span className="hidden lg:block" />Modern Home
-                            </div>
-                            <div className="description w-auto ">
-                                Every piece in The Everwood Collection tells a story of beauty, purpose, <span className="hidden lg:block" /> and enduring quality. Designed with modern sophistication and built  <span className="hidden lg:block" /> by skilled artisans, our collections bring warmth and character into
-                                <span className="hidden lg:block" />every space.
-                            </div>
-                        </div>
-                    </div>
+               {/* Main Content: Sidebar + Products Grid */}
+               <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+                    {/* Left Sidebar */}
+                    <CatalogSidebar
+                        totalResults={products.length}
+                        filteredResults={filteredProducts.length}
+                        filters={filters}
+                        onFiltersChange={setFilters}
+                    />
 
-                    <div className='margin-y'>
-                        <div 
-                            suppressHydrationWarning
-                            data-aos="fade-up"
-                            data-aos-delay="500"
-                            data-aos-duration="2000"
-                        >
-                            <div>
-                                <Image 
-                                    src="/image/Collection/Collection4.png"
-                                    alt="Collection 4"
-                                    width={2000}
-                                    height={1200}
-                                    quality={80}
+                    {/* Right Side: Products Grid */}
+                    <div className="flex-1">
+                        {/* Active Filters */}
+                        {activeFilters.length > 0 && (
+                            <div className="mb-6 flex flex-wrap items-center gap-2">
+                                {activeFilters.map((filter) => (
+                                    <div
+                                        key={filter.id}
+                                        className="flex items-center gap-2 bg-gray-100 rounded-lg px-6 py-2 text-sm text-gray-700"
+                                    >
+                                        <span>{filter.label}</span>
+                                        <button
+                                            onClick={() => removeFilter(filter.category, filter.value)}
+                                            className="hover:text-gray-900 transition-colors"
+                                            aria-label={`Remove ${filter.label} filter`}
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={2}
+                                                stroke="currentColor"
+                                                className="w-4 h-4"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                ))}
+                                <button
+                                    onClick={clearAllFilters}
+                                    className="text-sm lg:text-base text-gray-600 hover:text-gray-900 underline transition-colors"
+                                >
+                                    Clear All
+                                </button>
+                            </div>
+                        )}
+                        
+                        <div className={
+                            viewMode === 'grid'
+                                ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+                                : 'flex flex-col gap-4'
+                        }>
+                            {filteredProducts.map((product) => (
+                                <ProductCard
+                                    key={product.id}
+                                    id={product.id}
+                                    name={product.name}
+                                    price={product.price}
+                                    originalPrice={product.originalPrice}
+                                    status={product.status}
+                                    category={product.category}
+                                    images={product.images}
+                                    onWishlistToggle={(id) => console.log('Wishlist:', id)}
+                                    onCardClick={(id) => console.log('Clicked:', id)}
                                 />
-                            </div>
+                            ))}
                         </div>
-                    </div>
-                    <div data-aos="fade-up"
-                    suppressHydrationWarning
-                    data-aos-delay="100"
-                    data-aos-duration="2000">
-                    <div className='margin-y'>
-                        <div className="lg:flex flex-row items-center justify-between gap-4">
-                            {/*<div className="subtitle text-left">
-                                Curated Collections
-                            </div>*/}
-                            <div className='flex flex-row flex-wrap justify-center gap-2 md:gap-4 w-full mt-4 lg:mt-0'>
-                                <button 
-                                    onClick={() => handleCategorySelect('All')}
-                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                                        activeCategory === 'All' 
-                                            ? 'bg-button text-white' 
-                                            : 'text-button hover:bg-button hover:text-white'
-                                    }`}
-                                >
-                                    All
-                                </button>
-                                <button 
-                                    onClick={() => handleCategorySelect('Living')}
-                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                                        activeCategory === 'Living' 
-                                            ? 'bg-button text-white' 
-                                            : 'text-button hover:bg-button hover:text-white'
-                                    }`}
-                                >
-                                    Living
-                                </button>
-                                <button 
-                                    onClick={() => handleCategorySelect('Bedroom')}
-                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                                        activeCategory === 'Bedroom' 
-                                            ? 'bg-button text-white' 
-                                            : 'text-button hover:bg-button hover:text-white'
-                                    }`}
-                                >
-                                    Bedroom
-                                </button>
-                                <button 
-                                    onClick={() => handleCategorySelect('Wardrobes')}
-                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                                        activeCategory === 'Wardrobes' 
-                                            ? 'bg-button text-white' 
-                                            : 'text-button hover:bg-button hover:text-white'
-                                    }`}
-                                >
-                                    Wardrobes
-                                </button>
-                                <button 
-                                    onClick={() => handleCategorySelect('Kitchen')}
-                                    className={`py-2 px-4 md:px-8 rounded-full transition-colors cursor-pointer whitespace-nowrap ${
-                                        activeCategory === 'Kitchen' 
-                                            ? 'bg-button text-white' 
-                                            : 'text-button hover:bg-button hover:text-white'
-                                    }`}
-                                >
-                                    Kitchen
-                                </button>
-                            </div>
-                        </div>
-                        <Section08 selectedCategory={activeCategory} />
-                    </div>
                     </div>
                 </div>
             </div>
+
             <Footer2 />
         </div>
     )
 }
 
-export default function Page() {
-    return (
-        <Suspense fallback={<div className="min-h-[200px]" />}>
-            <CatalogPageContent />
-        </Suspense>
-    )
-}
+export default Page
+
+    
