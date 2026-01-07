@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Navbar2 } from '../component/Navbar/Navbar2'
 import Footer2 from '../component/Footer/Footer2'
 import ProductCard from '../component/catalog/card'
@@ -144,6 +145,7 @@ const products: Product[] = [
 ]
 
 function Page() {
+    const router = useRouter()
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [filters, setFilters] = useState<FilterState>({
@@ -156,6 +158,10 @@ function Page() {
         fabricColors: {},
      
     })
+
+    const handleCardClick = (id: number) => {
+        router.push(`/Catalog/${id}`)
+    }
 
 
    // Filter products based on category and filters
@@ -343,7 +349,7 @@ function Page() {
                                     category={product.category}
                                     images={product.images}
                                     onWishlistToggle={(id) => console.log('Wishlist:', id)}
-                                    onCardClick={(id) => console.log('Clicked:', id)}
+                                    onCardClick={handleCardClick}
                                 />
                             ))}
                         </div>
