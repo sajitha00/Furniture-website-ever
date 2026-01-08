@@ -4,6 +4,8 @@ import Image from 'next/image'
 import AddToCart from '../../Buttons/addtocart'
 import RequestQuote from '../../Buttons/requestquote'
 import ProductTable from './table'
+import RelatedProduct from './relatedProduct'
+import { Product } from '../type'
 
 interface CatalogViewProps {
     product: {
@@ -18,9 +20,10 @@ interface CatalogViewProps {
         }
         thumbnailImages?: string[]
     }
+    products?: Product[]
 }
 
-export default function CatalogView({ product }: CatalogViewProps) {
+export default function CatalogView({ product, products = [] }: CatalogViewProps) {
     const [selectedImage, setSelectedImage] = useState(product.images.black)
     const [selectedFabric, setSelectedFabric] = useState('Cotton')
     const [selectedColor, setSelectedColor] = useState('gray')
@@ -402,6 +405,14 @@ export default function CatalogView({ product }: CatalogViewProps) {
                 <ProductTable
                     description={product.description}
                 />
+
+                {/* Related Products Section */}
+                {products.length > 0 && (
+                    <RelatedProduct
+                        currentProductId={product.id}
+                        products={products}
+                    />
+                )}
             </div>
         </div>
     )

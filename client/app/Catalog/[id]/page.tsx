@@ -183,7 +183,7 @@ export default function ProductPage() {
     return (
         <div className="font-poppins bg-white min-h-screen">
             <Navbar2 />
-            <CatalogView product={productWithThumbnails} />
+            <CatalogView product={productWithThumbnails} products={products} />
             <Footer2 />
         </div>
     )
