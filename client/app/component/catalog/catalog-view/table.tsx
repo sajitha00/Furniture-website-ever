@@ -2,6 +2,9 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Dimensions from './dimensions'
+import Materials from './materials'
+import DeliveryReturns from './delivery&returns'
+import Review from './review'
 
 interface ProductTableProps {
     description?: string
@@ -95,27 +98,15 @@ export default function ProductTable({
                 )}
 
                 {activeTab === 'materials' && (
-                    <div className="text-sm md:text-base text-gray-700">
-                        {materials || (
-                            <p>Materials & Finish information will be displayed here. This content can be managed from the admin panel.</p>
-                        )}
-                    </div>
+                    <Materials />
                 )}
 
                 {activeTab === 'delivery' && (
-                    <div className="text-sm md:text-base text-gray-700">
-                        {delivery || (
-                            <p>Delivery & Returns information will be displayed here. This content can be managed from the admin panel.</p>
-                        )}
-                    </div>
+                    <DeliveryReturns />
                 )}
 
                 {activeTab === 'reviews' && (
-                    <div className="text-sm md:text-base text-gray-700">
-                        {reviews || (
-                            <p>Reviews will be displayed here. This content can be managed from the admin panel.</p>
-                        )}
-                    </div>
+                    <Review />
                 )}
             </div>
         </div>

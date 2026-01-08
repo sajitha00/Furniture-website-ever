@@ -45,28 +45,33 @@ export default function Dimensions({
             </div>
 
             {/* Right Side - Key Measurements */}
-            <div className="space-y-6">
+            <div className="space-y-6 pt-10">
                 <div>
-                    <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-text mb-4">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-normal text-[#2F2F2F] mb-3">
                         Key Measurements:
                     </h3>
-                    <ul className="space-y-3 text-base md:text-lg text-gray-700">
-                        <li>
-                            <span className="font-medium">Overall Width:</span> {measurements.width}
-                        </li>
-                        <li>
-                            <span className="font-medium">Overall Depth:</span> {measurements.depth}
-                        </li>
-                        <li>
-                            <span className="font-medium">Overall Height:</span> {measurements.height}
-                        </li>
-                    </ul>
+                    <div className="border max-w-[400px] border-gray-300 rounded-lg bg-white p-4 md:p-5">
+                        <ul className="space-y-3 text-base md:text-lg text-gray-700">
+                            <li className="flex justify-start gap-4 items-center border-b border-gray-200 pb-3 last:border-b-0 last:pb-0">
+                                <span className="font-medium">Overall Width:</span>
+                                <span>{measurements.width}</span>
+                            </li>
+                            <li className="flex justify-start gap-4 items-center border-b border-gray-200 pb-3 last:border-b-0 last:pb-0">
+                                <span className="font-medium">Overall Depth:</span>
+                                <span>{measurements.depth}</span>
+                            </li>
+                            <li className="flex justify-start gap-4 items-center border-b border-gray-200 pb-3 last:border-b-0 last:pb-0">
+                                <span className="font-medium">Overall Height:</span>
+                                <span>{measurements.height}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                
             </div>
             <div>
-                    <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-text mb-4">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-normal text-[#2F2F2F] mb-3">
                         Notes:
                     </h3>
                     <ul className="space-y-2 list-disc list-inside text-sm md:text-base lg:text-lg text-gray-700">
