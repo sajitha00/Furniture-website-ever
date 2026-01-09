@@ -80,7 +80,7 @@ export default function CatalogView({ product, products = [] }: CatalogViewProps
     }  
     return (
         <div className="font-poppins bg-white">
-            <div className="container mx-auto containerpaddin py-8 md:py-12 lg:py-16 xl:py-20 ">
+            <div className="container mx-auto containerpaddin margin-y">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* Left Side  */}
                     <div className="space-y-4">

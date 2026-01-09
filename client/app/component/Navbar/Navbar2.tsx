@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 
 export function Navbar2() {
   return (
@@ -43,16 +46,7 @@ function Navbar({ className }: { className?: string }) {
         className={cn("fixed top-2 lg:top-4 inset-x-0 max-w-5xl mx-auto z-50 px-4", className)}
       >
         {/* Desktop Navbar */}
-        <div className="bg-white rounded-full hidden lg:flex items-center justify-center px-2 lg:px-4 xl:px-6 2xl:px-8 shadow-lg overflow-hidden max-w-full">
-          {/* <Link href="/" className="shrink-0">
-            <Image
-              src="/image/Logo/Logo.png"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="w-10 h-10 sm:w-12 sm:h-12"
-            />
-          </Link> */}
+        <div className="bg-white rounded-full hidden lg:flex items-center justify-center px-2 lg:px-4 xl:px-6 2xl:px-8 shadow-lg overflow-hidden max-w-full relative">
           <Menu setActive={setActive} className="">
             <Link href="/" className={`cursor-pointer hover:text-black transition-colors whitespace-nowrap text-xs lg:text-sm xl:text-base shrink-0 ${pathname === '/' ? 'text-black font-bold' : 'text-gray-600'}`}>
               Home
@@ -78,6 +72,19 @@ function Navbar({ className }: { className?: string }) {
               Blog
             </Link>
           </Menu>
+          
+          {/* Right side icons - absolutely positioned */}
+          <div className="absolute right-2 lg:right-4 xl:right-6 2xl:right-8 flex items-center gap-3 lg:gap-2 xl:gap-3 shrink-0">
+          <Link href="/profile" className="text-gray-600 hover:text-black transition-colors">
+              <FaRegUser className="w-5 h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" />
+            </Link>
+            <Link href="/wishlist" className="text-gray-600 hover:text-black transition-colors">
+              <FaRegHeart className="w-5 h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" />
+            </Link>
+            <Link href="/cart" className="text-gray-600 hover:text-black transition-colors">
+              <MdOutlineShoppingBag className="w-5 h-5 lg:w-4 lg:h-4 xl:w-6 xl:h-6" />
+            </Link>
+          </div>
         </div>
 
         {/* Mobile/Tablet Navbar */}
@@ -92,18 +99,31 @@ function Navbar({ className }: { className?: string }) {
             />
           </Link>
 
-          {/* Hamburger Menu Button */}
-          <button
-            onClick={() => {
-              setMobileMenuOpen(!mobileMenuOpen);
-              setCatalogOpen(false);
-            }}
-            className="flex flex-col gap-1.5 w-8 h-8 justify-center items-center"
-          >
-            <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </button>
+          {/* Icons and Hamburger Menu */}
+          <div className="flex items-center gap-4">
+            <Link href="/wishlist" className="text-gray-600 hover:text-black transition-colors">
+              <FaRegHeart className="w-5 h-5" />
+            </Link>
+            <Link href="/cart" className="text-gray-600 hover:text-black transition-colors">
+              <MdOutlineShoppingBag className="w-5 h-5" />
+            </Link>
+            <Link href="/profile" className="text-gray-600 hover:text-black transition-colors">
+              <FaRegUser className="w-5 h-5" />
+            </Link>
+            
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(!mobileMenuOpen);
+                setCatalogOpen(false);
+              }}
+              className="flex flex-col gap-1.5 w-8 h-8 justify-center items-center"
+            >
+              <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -166,5 +186,3 @@ function Navbar({ className }: { className?: string }) {
     </>
   );
 }
-
-

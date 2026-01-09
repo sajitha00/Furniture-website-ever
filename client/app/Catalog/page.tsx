@@ -272,7 +272,7 @@ function Page() {
         <div className="font-poppins bg-white min-h-screen">
             <Navbar2 />
             
-            <div className="containerpaddin container mx-auto py-8 md:py-12">
+            <div className="containerpaddin container mx-auto margin-y">
                 {/* Header Section */}
                 <CatalogHeader
                     viewMode={viewMode}
